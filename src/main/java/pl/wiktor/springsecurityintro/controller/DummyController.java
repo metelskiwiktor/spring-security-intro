@@ -37,4 +37,34 @@ public class DummyController {
 
         return ResponseEntity.ok(response);
     }
+
+    @GetMapping("/public")
+    public ResponseEntity<Map<String, Object>> publicEndpoint() {
+        Map<String, Object> response = new HashMap<>();
+        response.put("message", "This is a public endpoint - anyone can access");
+        response.put("timestamp", System.currentTimeMillis());
+        response.put("access", "public");
+
+        return ResponseEntity.ok(response);
+    }
+
+    @GetMapping("/user")
+    public ResponseEntity<Map<String, Object>> userEndpoint() {
+        Map<String, Object> response = new HashMap<>();
+        response.put("message", "This is a user endpoint - only authenticated users");
+        response.put("timestamp", System.currentTimeMillis());
+        response.put("access", "user");
+
+        return ResponseEntity.ok(response);
+    }
+
+    @GetMapping("/admin")
+    public ResponseEntity<Map<String, Object>> adminEndpoint() {
+        Map<String, Object> response = new HashMap<>();
+        response.put("message", "This is an admin endpoint - only admins allowed");
+        response.put("timestamp", System.currentTimeMillis());
+        response.put("access", "admin");
+
+        return ResponseEntity.ok(response);
+    }
 }
